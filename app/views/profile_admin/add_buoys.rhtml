@@ -1,0 +1,25 @@
+<h1>Add buoys to Profile: <%= @profile.name %> </h1>
+
+
+
+
+<% form_tag :action => 'update_add_buoys', :id => @profile do  %>
+<table>
+
+<% for buoy in @buoys %>
+<tr>
+
+<td> <%= "#{buoy.number} #{buoy.name}" %> 
+<%= check_box_tag "buoy[]", buoy.number %>
+<br/>
+
+</td>
+</tr>
+
+
+</table>
+
+<% end %> 
+</br>
+<%= submit_tag 'Update' %>
+<% end %>

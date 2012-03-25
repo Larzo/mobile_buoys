@@ -1,0 +1,16 @@
+
+<% if !@web_browser %>
+<p>
+  <% @regions.each do |region| %>
+    <%=  link_to region.name, {:controller => 'main', :region => region.link_name, :action => :region }  %><br/>
+  <% end %>  
+  <%=  link_to 'Wind and Tides', {:controller => 'weather', :action => :index }  %><br/>
+  </p>
+<% else %>
+
+ <h1> MOBILE BUOY REPORTS </h1> 
+ </br>
+ <h3> Access this site from a cell phone that has a WML browser. </h3>
+
+
+<% end %>

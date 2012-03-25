@@ -1,0 +1,10 @@
+
+
+<% name = @weath.name.gsub(' ','-') %>
+<p> <%= link_to "Tide Info", {:action => 'show_tides', :controller => 'weather', :name => name } %> <br/> Conditions: </p>
+
+<p>
+<% @weath.weather_readings.each do |wr| %>
+<%= wr.hour + " (" + wr.temp + ") " + wr.wind %> <br/>
+<% end %>
+</p>

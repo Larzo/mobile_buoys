@@ -1,0 +1,10 @@
+<p> Winds and Tides </p>
+
+<p>
+<% @recs.each do |r| 
+name = r.name.gsub(' ','-')
+%>
+<%=link_to r.name, {:controller => 'weather', :name => "#{name}", :action => :show_weather }%>
+<br/>
+<% end %>
+</p>

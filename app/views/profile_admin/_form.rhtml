@@ -1,0 +1,25 @@
+<%= error_messages_for 'profile' %>
+
+<!--[form:profile]-->
+<p><label for="profile_name">Name</label><br/>
+<%= text_field 'profile', 'name'  %></p>
+<p><label for="wave_models">Wave Models</label><br/>
+<%= text_field 'profile', 'wave_models'  %></p>
+
+<% if @buoys.size > 0 %>
+Check buoys for deletion:
+<br/>
+<br/>
+
+<% end %>
+
+<% for buoy in @buoys %>
+
+<%= "#{buoy.number} #{buoy.name}" %>
+<%= check_box_tag "buoy[]", buoy.number %>
+<br/>
+
+<% end %>
+
+<!--[eoform:profile]-->
+

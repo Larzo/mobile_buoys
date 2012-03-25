@@ -1,0 +1,27 @@
+<h1>Listing profiles</h1>
+
+<table>
+  <tr>
+  <% for column in Profile.content_columns %>
+    <th><%= column.human_name %></th>
+  <% end %>
+  </tr>
+  
+<% for profile in @profiles %>
+  <tr>
+  <% for column in Profile.content_columns %>
+    <td><%=h profile.send(column.name) %></td>
+  <% end %>
+    <td><%= link_to 'Show', :action => 'show', :id => profile %></td>
+    <td><%= link_to 'Edit', :action => 'edit', :id => profile %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => profile }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @profiles %>
+
+<br />
+
+<%= link_to 'New profile', :action => 'new' %>
+<%= link_to 'Station admin', :action => 'index', :controller => 'station_admin'%>

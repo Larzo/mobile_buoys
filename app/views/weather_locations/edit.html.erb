@@ -1,0 +1,26 @@
+<h1>Editing weather_location</h1>
+
+<%= error_messages_for :weather_location %>
+
+<% form_for(@weather_location) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Key</b><br />
+    <%= f.text_field :key %>
+  </p>
+
+    <b>Tide Key</b><br />
+    <%= f.text_field :tide_key %>
+
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @weather_location %> |
+<%= link_to 'Back', weather_locations_path %>

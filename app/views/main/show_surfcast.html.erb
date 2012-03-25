@@ -1,0 +1,11 @@
+<p><%= @msg %></p>
+<% if @prof %>
+<% for station in @prof.stations %>
+<% if station.surfcasts.size > 0 %>
+<p><%=  link_to "#{station.name} (#{station.number})", {:controller => 'main', :station => "#{station.number}", :action => :show_full_surfcast }  %></p><p>
+<% casts = station.surfcasts.slice(0,8) %>
+<table columns="3"><tr><td>dt</td><td>ht</td><td>dr</td></tr>
+<% casts.each do |r| %>
+<tr><%= "<td>#{r.day}:#{r.hour}</td><td>#{r.height}</td><td>#{r.direction}</td>" %></tr>
+<% end %>
+</table></p><% end %><% end %><% end %>

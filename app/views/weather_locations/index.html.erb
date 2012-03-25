@@ -1,0 +1,22 @@
+<h1>Listing weather_locations</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Key</th>
+  </tr>
+
+<% for weather_location in @weather_locations %>
+  <tr>
+    <td><%=h weather_location.name %></td>
+    <td><%=h weather_location.key %></td>
+    <td><%= link_to 'Show', weather_location %></td>
+    <td><%= link_to 'Edit', edit_weather_location_path(weather_location) %></td>
+    <td><%= link_to 'Destroy', weather_location, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New weather_location', new_weather_location_path %>

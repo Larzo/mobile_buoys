@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Created by: Reality Software | www.realitysoftware.ca
+Released by: On Dieting | www.ondieting.co.uk
+Note: This is a free template released under the Creative Commons Attribution 3.0 license, 
+which means you can use it in any way you want provided you keep links to authors intact.
+Don't want our links in template? You can pay a link removal fee: www.realitysoftware.ca/templates/
+You can also purchase a PSD-file for this template.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<%= stylesheet_link_tag 'style' %>
+<%= stylesheet_link_tag 'display' %> 
+<!-- 
+<link href="/styles/style.css" rel="stylesheet" type="text/css"/>
+-->
+
+
+</head>
+
+<body>
+<% #= show_spinner %>
+<div id="container">
+<!-- header -->
+<div id="header">
+
+<div id="logo"><a href="#">BUOY DATA</a></div>
+
+<div id="slogan">Cell phone buoy reports for travelers</div>
+
+</div>
+
+<div id="header_menu">
+    <% @regions.each do |r| %>
+      <%= link_to r.name, 
+      {:controller => 'main', :action => :region, :id => r } %> 
+      &nbsp; | &nbsp;
+    <% end %>	
+	<%= link_to 'Stations', :controller => 'station_admin', :action => 'index' %>
+	      &nbsp; | &nbsp;
+	<%= link_to 'Map', :controller => 'buoy_map', :action => 'index' %>
+	
+</div>
+
+<!--end header -->
+<!-- main -->
+<div id="main">
+
+<div id="sidebar">
+
+<!--	
+<h3>Vestibulum</h3>
+Proin aliquet, sodales vel consequat eget, faucibus vitae lorem. Nunc rhoncus, dui quis pharetra tincidunt, magna augue <a href="#">faucibus elit</a>, sit amet gravida lacus turpis.
+<h3>Suspendisse</h3>
+<ul>
+<li><a href="#">Vivamus pulvinar</a></li>
+<li><a href="#">Pellentesque enim</a></li>
+<li><a href="#">Donec tincidunt</a></li>
+<li><a href="#">Quisque congue</a></li>
+<li><a href="#">Cum sociis natoque</a></li>
+</ul>
+<h3>Proin Tempor</h3>
+<ul>
+<li><a href="#">Fusce ulamcorper</a></li>
+<li><a href="#">Posuere porta</a></li>
+<li><a href="#">Malesuada fames</a></li>
+<li><a href="#">Faucibus ornare</a></li>
+<li><a href="#">Condimentum null</a></li>
+</ul>
+-->
+</div>
+
+<% 
+   @centered_text = true if !defined?(@centered_text)
+   @style = "text-align: center;" if @centered_text 
+%>
+
+<% if @buoy_map %>
+  <div style="width:100%; height:100%" id="map">
+<% else %>	
+  <div id="text" style="<%=@style%>">
+<% end %>
+<!--
+<h1>Welcome</h1>
+<b>Ondieting Blue</b> is a free template created by <a href="http://www.realitysoftware.ca/">Reality Software</a> and released by <a href="http://www.ondieting.co.uk/">On Dieting</a> under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a> license, which means you can use it in any way you want provided you keep links to authors intact.<br/><br/>
+Pellentesque tincidunt, tellus ac vehicula sodales, velit mi cursus nisl, a hendrerit justo purus quis odio. Curabitur eleifend blandit consequat. Quisque venenatis elementum ligula, nec molestie odio posuere at. Sed id metus eget mi porttitor pulvinar.
+<h2>Lore Ipsum</h2>
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla lacus velit, adipiscing non elementum vel, facilisis in urna. Vestibulum elit tortor, fringilla eu molestie in, gravida tristique metus.
+<ul>
+<li>Aenean fringilla nisi a sem viverra ac cursus magna tempus.</li>
+<li>Mauris egestas enim sed ligula iaculis sodales.</li>
+<li>Cras condimentum nulla nec quam tempor vel volutpat lectus vulputate.</li>
+</ul>
+Donec nibh dolor, sodales vel consequat eget, faucibus vitae lorem. Nunc rhoncus, dui quis pharetra tincidunt, magna augue faucibus elit, sit amet <a href="#">gravida lacus</a> turpis quis ligula. Proin aliquet, sem at consequat auctor, nisl mauris euismod ante, a sollicitudin sapien odio et erat.
+<h2>Dolor sit Amet</h2>
+Aenean at dictum lacus. Nullam scelerisque adipiscing ligula a volutpat. Praesent pharetra elementum blandit. Vestibulum pharetra lectus id metus vehicula non ultricies lacus vestibulum.
+<ol>
+<li>Quisque lacinia sapien nec dui congue dignissim.</li>
+<li>Nullam nec arcu sit amet orci vestibulum volutpat eu eget risus.</li>
+<li>Vivamus rhoncus velit sit amet libero cursus consequat.</li>
+</ol>
+Pellentesque diam arcu, cursus eget tristique at, imperdiet sit amet metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum suscipit tempor. Aliquam vitae <a href="#">neque nibh</a>, in molestie nibh. Pellentesque ac risus tellus. Praesent enim purus, eleifend eu vehicula vel, adipiscing vitae dui.
+-->
+<%= yield %>
+
+
+</div>
+
+</div>
+
+<!-- end main -->
+<!-- footer -->
+
+<div id="footer_menu">
+	<%# = link_to 'Upload', :controller => 'pdf_upload', :action => 'index' 
+	%>
+	<!--&nbsp; | &nbsp;
+    -->	
+	<%# = link_to 'Files', :controller => 'pdf_upload', :action => 'view_all' 
+	%>
+</div>
+
+
+
+<!--
+<div id="footer">
+Copyright 2009 Your Website.
+Design by <a href="http://www.ondieting.co.uk/">On Dieting</a>.
+</div>
+</div>
+<center><span style="width: 100%; font-family: helvetica; font-size: 10px;">
+			Design downloaded from <a href="http://www.template4all.com" style="font-family: helvetica; color: red; font-size: 11px;">Free Website Templates</a><br>
+			Free web design, web templates, web layouts, and website resources! <a href="http://www.freethemes4all.com" style="font-family: helvetica; color: green; font-size: 11px;">Free CSS Templates</a>
+			</span></center>
+
+-->
+			
+</body>
+</html>

@@ -1,0 +1,18 @@
+<p>
+<%= @region_msg %>
+</p>
+<p>
+
+<% for prof in @profiles %>
+
+<% if in_region(@region,prof) %>
+<%   name = prof.name.gsub(' ','-') %>
+<%=  link_to prof.name, {:controller => 'main', :name => "#{name}", :action => :show_surfcast }  %>
+<%   area = get_area(prof) %>
+<%=  area %>
+<br/>
+
+<% end %>
+
+<% end %>
+</p>

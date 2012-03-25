@@ -1,0 +1,12 @@
+<h1>Editing profile</h1>
+
+<% form_tag :action => 'update', :id => @profile do %>
+  <%= render :partial => 'form' %>
+  <%= submit_tag 'Submit' %>
+<% end %>
+
+
+
+<%= link_to 'Show', :action => 'show', :id => @profile %> |
+<%= link_to 'Add Buoys', :action => 'add_buoys', :id => @profile %>
+<%= link_to 'Back', :action => 'list' %>

@@ -1,0 +1,8 @@
+
+#ajax_busy {position: fixed;
+           top: 0; right: 0;
+           width: 120px;
+           background-color: #900;           
+           color: #fff;
+           padding: 4px;}
+           

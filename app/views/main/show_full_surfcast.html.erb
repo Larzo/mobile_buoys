@@ -1,0 +1,24 @@
+<p><%= @msg %></p>
+<% 
+last_heading = 'dr'
+params = {:action => 'show_full_surfcast', :controller => 'main'}
+link = 'Period'
+params[:period] = '1'
+
+if @show_period 
+ last_heading = 'p'
+ link = 'Direction'
+ params.delete(:period)
+end 
+%>
+<p><%= link_to link, params %></p>
+<% if @station.surfcasts.size > 0 %>
+<p><%="#{@station.name} #{@station.number}" %></p><p>
+<% casts = @station.surfcasts.slice(0,5000) %>
+<table columns="3"><tr><td>dt</td><td>ht</td><td><%=last_heading%></td></tr>
+<% casts.each do |r| 
+last_col = (@show_period) ? r.period : r.direction
+%>
+<tr><%= "<td>#{r.day}:#{r.hour}</td><td>#{r.height}</td><td>#{last_col}</td>" %></tr>
+<% end %>
+</table></p><% end %>

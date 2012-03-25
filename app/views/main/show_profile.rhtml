@@ -1,0 +1,19 @@
+
+<p>
+<%= @msg %>
+</p>
+<% if @prof %>
+
+  <% for station in @prof.stations %>
+     <p>
+     <%#= "#{station.name} (#{station.number})" %>
+     <%= station_info(station) %>
+     <br/>
+     <% for r in station.readings %>
+       <%= "#{r.wvht}@#{r.dpd} WDIR:#{r.wdir}@#{r.wspd} - AT #{r.timeof_conditions}" %>
+     <% end %>
+     </p>
+  <% end %>
+
+
+<% end %>

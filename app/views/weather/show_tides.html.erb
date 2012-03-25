@@ -1,0 +1,9 @@
+
+<p> Tide Info: <%= @weath.name %> </p>
+
+<p>
+<% @weath.tide_readings.each do |td| %>
+<%= td.day + " " + td.hour + " " + td.event + " " + td.size %>
+<br/>
+<% end %>
+</p>

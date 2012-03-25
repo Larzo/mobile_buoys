@@ -1,0 +1,40 @@
+
+
+
+
+ <div id="basicMap"> </div>
+ 
+ 
+  <script>
+      function init() {
+        map = new OpenLayers.Map("basicMap");
+        var mapnik = new OpenLayers.Layer.OSM();
+        map.addLayer(mapnik);
+        map.setCenter(new OpenLayers.LonLat(-70.144,43.531) // Center of the map
+          .transform(
+            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            new OpenLayers.Projection("EPSG:900913") // to Spherical Mercator Projection
+          ), 11 // Zoom level
+        );
+        
+        <% @stations.each do |station| %>
+        // var lonLat = new OpenLayers.LonLat(-70.144,43.531 )
+          var lonLat = new OpenLayers.LonLat(<%= station.longitude %>, <%= station.latitude %>)          
+            .transform(
+              new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+              map.getProjectionObject() // to Spherical Mercator Projection
+            );
+ 
+          // var zoom=12;
+ 
+          var markers = new OpenLayers.Layer.Markers( "Markers" );
+          map.addLayer(markers);
+ 
+          markers.addMarker(new OpenLayers.Marker(lonLat));
+        <% end %>
+          map.setCenter (lonLat, 5);
+        
+      }
+    </script>
+ 
+

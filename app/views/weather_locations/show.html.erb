@@ -1,0 +1,20 @@
+<p>
+  <b>Name:</b>
+  <%=h @weather_location.name %>
+</p>
+
+<p>
+  <b>Key:</b>
+  <%=h @weather_location.key %>
+</p>
+
+
+<p>
+  <b>Tide Key:</b>
+  <%=h @weather_location.tide_key %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_weather_location_path(@weather_location) %> |
+<%= link_to 'Back', weather_locations_path %>
