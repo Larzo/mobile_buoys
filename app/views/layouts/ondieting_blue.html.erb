@@ -33,14 +33,16 @@ You can also purchase a PSD-file for this template.
 </div>
 
 <div id="header_menu">
+    <%= link_to 'Home', :controller => 'main', :action => 'index' %>
+    &nbsp; | &nbsp;
     <% @regions.each do |r| %>
       <%= link_to r.name, 
       {:controller => 'main', :action => :region, :id => r } %> 
       &nbsp; | &nbsp;
     <% end %>	
-	<%= link_to 'Stations', :controller => 'station_admin', :action => 'index' %>
-	      &nbsp; | &nbsp;
-	<%= link_to 'Map', :controller => 'buoy_map', :action => 'index' %>
+	<%# = link_to 'Stations', :controller => 'station_admin', :action => 'index' %>
+	   <!--   &nbsp; | &nbsp; -->
+	<%# = link_to 'Map', :controller => 'buoy_map', :action => 'index' %>
 	
 </div>
 

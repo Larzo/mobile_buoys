@@ -52,7 +52,7 @@ class Profile < ActiveRecord::Base
 
 # name used with a named url
   def link_name
-    self.name.gsub(/\s/,"_").downcase
+    self.name.gsub(/\s/,"_") # .downcase
   end
 
   # get updated reports for all associated buoys

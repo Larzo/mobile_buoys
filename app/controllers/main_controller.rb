@@ -19,7 +19,7 @@ class MainController < ApplicationController
       @region = Region.find(id)
     else
       # named urls for cell phones are better as bookmarks
-      name = params[:region].gsub(/_/," ").make_caps
+      name = params[:region].gsub(/_/," ") # .make_caps
       @region = Region.find_by_name(name)
     end 
     @profiles = @region.profiles
@@ -32,7 +32,7 @@ class MainController < ApplicationController
   def show_profile
     @centered_text = false
     name = params[:name]
-    name = name.gsub(/_/,' ').make_caps
+    name = name.gsub(/_/,' ') # .make_caps
     @prof = Profile.find(:first,
       :conditions => ["name = :name",{:name => name}])
 

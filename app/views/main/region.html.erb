@@ -7,8 +7,8 @@
 
   <%=  link_to prof.name, {:controller => 'main', :name => "#{prof.link_name}", :action => :show_profile }  %>
   <% if @web_browser %>
-    <%= link_to 'map', {:controller => "buoy_map", :action => 'show_map',
-    	                :id => prof} %>
+    <%# = link_to 'map', {:controller => "buoy_map", :action => 'show_map',
+    #	                :id => prof} %>
   <% end %>
   <br/>
 
