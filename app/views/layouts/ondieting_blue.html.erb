@@ -35,10 +35,13 @@ You can also purchase a PSD-file for this template.
 <div id="header_menu">
     <%= link_to 'Home', :controller => 'main', :action => 'index' %>
     &nbsp; | &nbsp;
-    <% @regions.each do |r| %>
+    <% @regions.each_with_index do |r,idx| %>
+      <% unless idx.eql?(0) %>
+        &nbsp; | &nbsp; 
+      <% end %>	
       <%= link_to r.name, 
       {:controller => 'main', :action => :region, :id => r } %> 
-      &nbsp; | &nbsp;
+      
     <% end %>	
 	<%# = link_to 'Stations', :controller => 'station_admin', :action => 'index' %>
 	   <!--   &nbsp; | &nbsp; -->
