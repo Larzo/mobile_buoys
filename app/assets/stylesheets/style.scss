@@ -1,4 +1,4 @@
-body {margin:0; background:url(../images/body_bg.png) repeat-x #3885CC; font-family:Arial, Helvetica, sans-serif;}
+body {margin:0; background: image-url('body_bg.png') repeat-x #3885CC; font-family:Arial, Helvetica, sans-serif;}
 
 #container {width:950px; margin:0 auto;}
 
@@ -6,11 +6,11 @@ body {margin:0; background:url(../images/body_bg.png) repeat-x #3885CC; font-fam
 #logo {float:left; padding:33px 0 0 45px; font-size:32px; font-family:"Comic Sans MS", cursive;}
 #logo a {display:block; color:#FFFFFF; text-decoration:none;}
 #slogan {float:right; padding:33px 45px 0 0; color:#FFFFFF; font-size:16px; text-align:center; font-family:"Comic Sans MS", cursive;}
-#header_menu {text-align:center; color:#FFFFFF; font-size:14px; font-weight:bold; height:36px; background:url(../images/header_bg.png) no-repeat; padding-top:31px;}
+#header_menu {text-align:center; color:#FFFFFF; font-size:14px; font-weight:bold; height:36px; background: image-url('header_bg.png') no-repeat; padding-top:31px;}
 #header_menu a {color:#CC385E; text-decoration:none;}
 #header_menu a:hover {color:#7F2138;}
 
-#main {background:url(../images/main_bg.png) repeat-y; font-size:13px; line-height:17px; color:#333333; float:left; width:100%;}
+#main {background: image-url('main_bg.png') repeat-y; font-size:13px; line-height:17px; color:#333333; float:left; width:100%;}
 #main br {line-height:10px;}
 #main a {color:#3885CC;}
 #main a:hover {color:#21517F;}
@@ -24,9 +24,9 @@ body {margin:0; background:url(../images/body_bg.png) repeat-x #3885CC; font-fam
 #sidebar {width:180px; float:right; margin:6px 45px 30px 30px; display:inline;}
 #sidebar h3 {font-size:20px; font-weight:normal; margin:24px 0 8px 0; color:#306DA8;}
 #sidebar ul {margin:0px; padding:0px;}
-#sidebar li {list-style:none; padding:1px 0 1px 12px; background:url(../images/li.png) 0px 8px no-repeat;}
+#sidebar li {list-style:none; padding:1px 0 1px 12px; background: image-url('li.png') 0px 8px no-repeat;}
 
-#footer_menu {height:41px; background:url(../images/footer_bg.png) no-repeat; clear:both; text-align:center; color:#FFFFFF; font-size:12px; padding-top:16px;}
+#footer_menu {height:41px; background: image-url('footer_bg.png') no-repeat; clear:both; text-align:center; color:#FFFFFF; font-size:12px; padding-top:16px;}
 #footer_menu a {color:#CC385E; text-decoration:none;}
 #footer_menu a:hover {color:#7F2138;}
 

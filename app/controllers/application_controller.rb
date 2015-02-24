@@ -37,6 +37,10 @@ private
   
   end  
   
+  
+  def set_regions
+    @regions = Region.all
+  end  
   # the layout depends on if the access is from a cell phone or
   # regular browser. 
   
@@ -44,7 +48,12 @@ private
   # layout = 'main'
     layout = 'ondieting_blue'
     # regions are used in the layout
-    @regions = Region.find(:all)
+    
+    # LJG !!!
+    # note, layout may be determined late somehow such
+    # that regions does not carry thru in Rails 4
+    @regions = Region.all
+    
 
     @web_browser = true
     if (mobile_browser)
@@ -76,9 +85,12 @@ private
       logger.info('CELL ACCESS') 
     else
       logger.info('BROWSER ACCESS')
-    end    
+    end 
+    # puts 'AGENT:'
+    # puts request.env['HTTP_USER_AGENT']    
     # use ?wml=1 in url to test on valaidation sites etc
-    if ((!ie && !firefox) || params[:wml])
+    if params[:wml]
+    # if ((!ie && !firefox) || params[:wml])
       mobile = true      
     end
     return mobile

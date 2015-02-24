@@ -1,12 +1,16 @@
 class StationAdminController < AdminbaseController 
   def index
     list
-    render :action => 'list'
+    respond_to do |format|
+      format.html { render action: 'list' }
+      format.json { render action: 'list', format: 'json' }
+    end
+    
   end
 
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
-  verify :method => :post, :only => [ :destroy, :create, :update ],
-         :redirect_to => { :action => :list }
+  #verify :method => :post, :only => [ :destroy, :create, :update ],
+  #       :redirect_to => { :action => :list }
 
   def list
     #@station_pages, @stations = paginate :stations, :per_page => 10

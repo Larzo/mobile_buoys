@@ -4,9 +4,10 @@ class ProfileAdminController < AdminbaseController
     render :action => 'list'
   end
 
+  # !!! LJG depricated ? does not work in rails 4
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
-  verify :method => :post, :only => [ :destroy, :create, :update ],
-         :redirect_to => { :action => :list }
+  #verify :method => :post, :only => [ :destroy, :create, :update ],
+  #       :redirect_to => { :action => :list }
 
   def list
     @profiles = Profile.paginate :page => params[:page]

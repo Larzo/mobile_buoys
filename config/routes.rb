@@ -62,16 +62,21 @@ MobileSurf::Application.routes.draw do
   
   # match 'products/:id', :to => 'catalog#view'
   
-  match 'region/:region', :to => 'main#region'
+  get 'region/:region', :to => 'main#region'
+  get 'region-id/:id', :to => 'main#region'  
+  get 'regions', :to => 'main#regions'
   
-  match 'forcast/:region', :to => 'main#forcast'
+  get 'forcast/:region', :to => 'main#forcast'
   
-  match 'prof/:name', :to => 'main#show_profile' 
-  match 'profmodel/:name', :to => 'main#show_surfcast'
+  get 'prof/:name(.:format)', :to => 'main#show_profile'
+  get 'prof-id/:id', :to => 'main#show_profile_by_id'
+  
    
-  match 'buoymodel/:station', :to => 'main#show_full_surfcast'
-  match 'weather/:name', :to => 'weather#show_weather'
-  match 'tides/:name', :to => 'weather#show_tides'
+  get 'profmodel/:name', :to => 'main#show_surfcast'
+   
+  get 'buoymodel/:station', :to => 'main#show_full_surfcast'
+  get 'weather/:name', :to => 'weather#show_weather'
+  get 'tides/:name', :to => 'weather#show_tides'
   
   get 'weather/index'
   get 'adminbase/login'
@@ -101,6 +106,7 @@ MobileSurf::Application.routes.draw do
   get 'station_admin/list'
   post 'station_admin/update'
   
+  get "main/regions"
   get "main/region"
   get "main/reports"
   post 'adminbase/authorize'

@@ -1,8 +1,17 @@
 source 'http://rubygems.org'
 
 # gem 'rails', '3.0.10'
-gem 'rails', '3.1'
+gem 'rails', '4.2'
+
+gem 'sass-rails', '~> 5.0'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+
+gem 'jquery-rails'
+
 gem 'will_paginate'
+
+gem 'jbuilder', '~> 2.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -14,7 +23,9 @@ gem "rake", "10.1.1"
 
 gem 'hpricot'
 
-gem 'prototype-rails'
+#gem 'prototype-rails'
+
+gem 'tzinfo-data'
 
 # Use unicorn as the web server
 # gem 'unicorn'

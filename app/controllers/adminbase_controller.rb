@@ -2,6 +2,7 @@ class AdminbaseController < ApplicationController
 
   before_filter :check_login, :except => ['login','authorize']
   layout :determine_layout
+  before_filter :set_regions
 
   def login
   end  
