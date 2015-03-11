@@ -8,6 +8,13 @@ class StationAdminController < AdminbaseController
     
   end
 
+
+  def json_list
+    list
+    puts 'in json list'
+    render action: 'list', format: 'json'
+  end
+  
   # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
   #verify :method => :post, :only => [ :destroy, :create, :update ],
   #       :redirect_to => { :action => :list }

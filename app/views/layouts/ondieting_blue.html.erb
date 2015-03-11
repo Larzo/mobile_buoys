@@ -13,6 +13,8 @@ You can also purchase a PSD-file for this template.
 <title></title>
 <%= stylesheet_link_tag 'style' %>
 <%= stylesheet_link_tag 'display' %> 
+
+<%= javascript_include_tag 'application' %>
 <!-- 
 <link href="/styles/style.css" rel="stylesheet" type="text/css"/>
 -->
@@ -33,20 +35,17 @@ You can also purchase a PSD-file for this template.
 </div>
 
 <div id="header_menu">
-    <%= link_to 'Home', :controller => 'main', :action => 'index' %>
-    &nbsp; | &nbsp;
-    <% @regions.each_with_index do |r,idx| %>
-      <% unless idx.eql?(0) %>
-        &nbsp; | &nbsp; 
-      <% end %>	
-      <%= link_to r.name, 
-      {:controller => 'main', :action => :region, :id => r } %> 
-      
-    <% end %>	
-	<%# = link_to 'Stations', :controller => 'station_admin', :action => 'index' %>
-	   <!--   &nbsp; | &nbsp; -->
-	<%# = link_to 'Map', :controller => 'buoy_map', :action => 'index' %>
-	
+    <% if @regions %>
+	    <%= link_to 'Home', :controller => 'main', :action => 'index' %>
+	    &nbsp; | &nbsp;
+	    <% @regions.each_with_index do |r,idx| %>
+	      <% unless idx.eql?(0) %>
+	        &nbsp; | &nbsp; 
+	      <% end %>	
+	      <%= link_to r.name, 
+	      {:controller => 'main', :action => :region, :id => r } %>   
+	    <% end %>	
+    <% end %>
 </div>
 
 <!--end header -->

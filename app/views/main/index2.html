@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<body ng-app="myapp">
+
+
+  <div ng-controller="BuoyCtrl" >
+    <button ng-click="myData.doClick(item, $event)">Send AJAX Request</button>
+    <br/>
+    Data from server: {{myData.fromServer}}
+    
+     <select ng-model="selectedProfile" 
+       ng-options="profile.id as profile.name for profile in profiles_sel">
+     </select>
+       
+     <table ng-repeat=
+      "buoy in buoys | filter:foundInProfile(selectedProfile)">
+      <tr>
+        <td>{{buoy.name}}</td>
+        <td>{{buoy.number}}</td>             	
+      </tr>
+    </table>
+    
+    <button ng-click='addBuoy()' ng-hide='buoyAddEnabled'> Add Buoy </button>
+    <select ng-model="buoyToAdd" ng-show='buoyAddEnabled'
+       ng-change="addBuoyToProf(buoyToAdd)"
+       ng-options=
+         "buoy.id as buoy.name for buoy in buoys| filter:notFoundInProfile(selectedProfile)">
+     </select>
+    
+  </div>
+  
+
+
+  <script>
+  
+    function inProfile(buoy, profile_id)
+      {
+      if (!profile_id)
+        {
+        return(true);
+     	}
+      else
+        {
+     	  return(buoy.profiles.indexOf(profile_id) >= 0);
+     	} 	
+	 };
+    
+    angular.module("myapp", [])
+        .controller("BuoyCtrl", function($scope, $http) {
+            $scope.myData = {};
+            
+            $scope.notFoundInProfile = function(profile_id) {
+              return (function(buoy) 
+                {  
+                return(!inProfile(buoy, profile_id));
+                } );
+            };
+            
+            $scope.addBuoyToProf = function(buoy)
+            {
+              console.log('add', buoy);
+            };
+            
+            $scope.foundInProfile = function(profile_id) {
+              console.log('profile_id', profile_id);
+              return (function(buoy) 
+                 {  
+                 	return(inProfile(buoy, profile_id));
+                 } );
+            };
+            
+            $scope.addBuoy = function() {
+            	if ($scope.selectedProfile)
+            	  {
+                  $scope.buoyAddEnabled = !$scope.buoyAddEnabled;
+                 }
+            };
+            
+            $scope.myData.doClick = function(item, event) {
+
+                var responsePromise = $http.get("/data.json");
+
+                responsePromise.success(function(data, status, headers, config) {
+                    $scope.myData.fromServer = data.title;
+                    $scope.buoys = data.stations;
+                    $scope.profiles = data.profiles;
+                    $scope.buoyAddEnabled = false;
+                    $scope.profiles_sel = Object.create($scope.profiles);
+                    $scope.profiles_sel.unshift(' ');
+                });
+                responsePromise.error(function(data, status, headers, config) {
+                    alert("AJAX failed!");
+                });
+            };
+
+        } );
+  </script>
+ </body>
+ 
+ </html>

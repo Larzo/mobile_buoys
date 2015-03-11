@@ -3,7 +3,7 @@
 class MainController < ApplicationController
 
   layout :determine_layout
-  before_filter :set_regions
+  before_filter :set_regions, except: :index3
   helper :main
   after_filter :cors_set_access_control_headers
 
@@ -20,6 +20,22 @@ class MainController < ApplicationController
     @region = ""
     @region_msg = "all regions"
     @profiles = Profile.all 
+  end
+
+  def data
+    @stations = Station.all
+    @profiles = Profile.all
+    respond_to do |format|
+      format.json
+    end
+  end
+
+  def index3
+    
+  end
+
+  def index2
+    
   end
 
   def regions

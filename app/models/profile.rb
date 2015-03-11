@@ -5,6 +5,8 @@ class Profile < ActiveRecord::Base
 
   has_many :station_joins 
   has_many :stations, :through => :station_joins
+  has_many :regions, :through => :station_joins
+  #belongs_to :region, :through => :station_joins
 
   # this is called from the setup script.
   # it finds all of the buoys that have a 
@@ -16,6 +18,7 @@ class Profile < ActiveRecord::Base
   # The description string stored in the
   # buoy record came from the NOAA buoy web site
   # 
+  
   
   def find_by_state(states)
     states = [states] if states.class != Array
@@ -48,6 +51,14 @@ class Profile < ActiveRecord::Base
       end
     end
      
+  end
+  
+  def region_id
+    res = nil
+    if self.regions.length > 0
+      res = regions.first.id
+    end
+    res
   end
 
 # name used with a named url

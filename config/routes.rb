@@ -1,4 +1,10 @@
 MobileSurf::Application.routes.draw do
+  resources :regions
+
+  resources :profiles
+
+  resources :stations
+
   get "buoy_map/index"
 
   # The priority is based upon order of creation:
@@ -61,7 +67,7 @@ MobileSurf::Application.routes.draw do
   root :to => 'main#index'
   
   # match 'products/:id', :to => 'catalog#view'
-  
+    
   get 'region/:region', :to => 'main#region'
   get 'region-id/:id', :to => 'main#region'  
   get 'regions', :to => 'main#regions'
@@ -112,6 +118,12 @@ MobileSurf::Application.routes.draw do
   post 'adminbase/authorize'
   
   get "buoy_map/show_map"
+  
+  get "/index2", to: "main#index2"
+  get "/admin", to: "admin#index"
+  get "/buoy-data.json", to: "station_admin#index"
+  
+  get "/data", to: "main#data"
   
   # Install the default route as the lowest priority.
 #  map.connect ':controller/:action/:id.:format'
